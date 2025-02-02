@@ -6,5 +6,5 @@ BRANCH=solution
 
 [[ -d "$DEST" ]] && rm -Rf "$DEST"
 git clone "$URL" "$DEST"
-git -C "$DEST" checkout --track "$BRANCH"
+git -C "$DEST" checkout --track "origin/$BRANCH"
 docker compose -f "$DEST/compose.yaml" up -d
