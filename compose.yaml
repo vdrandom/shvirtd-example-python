@@ -6,6 +6,7 @@ services:
     build:
       context: /opt/app
       network: host
+      dockerfile: Dockerfile.python
     depends_on:
       db:
         condition: service_healthy
