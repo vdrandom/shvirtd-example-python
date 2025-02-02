@@ -3,7 +3,7 @@ include:
 
 services:
   web:
-    image: cr.yandex/crp1c299naqueubq8k0r/shvirtd-example-python:0.0.1
+    image: cr.yandex/crp6dq0nqlqts037d24m/shvirtd-example-python:0.0.1
     environment:
       DB_HOST: db
       DB_USER: app
@@ -19,4 +19,3 @@ services:
     networks:
       backend:
         ipv4_address: 172.20.0.10
-    

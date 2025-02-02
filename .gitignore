@@ -1,4 +1,4 @@
 .direnv
 .envrc
-.terraform*
-terraform*
+_terraform/.terraform*
+_terraform/terraform.tfstate*
