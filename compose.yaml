@@ -4,6 +4,9 @@ include:
 services:
   web:
     image: cr.yandex/crp6dq0nqlqts037d24m/shvirtd-example-python:0.0.1
+    depends_on:
+      db:
+        condition: service_healthy
     environment:
       DB_HOST: db
       DB_USER: app
@@ -16,6 +19,10 @@ services:
   db:
     image: mysql:8
     env_file: .env
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 2
     networks:
       backend:
         ipv4_address: 172.20.0.10
