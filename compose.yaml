@@ -3,7 +3,9 @@ include:
 
 services:
   web:
-    image: cr.yandex/crp6dq0nqlqts037d24m/shvirtd-example-python:0.0.1
+    build:
+      context: /opt/app
+      network: host
     depends_on:
       db:
         condition: service_healthy

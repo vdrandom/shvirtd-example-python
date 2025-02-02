@@ -13,15 +13,21 @@ provider "yandex" {
   zone = "ru-central1-b"
 }
 
-resource "yandex_container_registry" "test" {
-  name = "test"
-}
+### using registry is too fiddly when recreating stuff ###
 
-resource "yandex_container_registry_iam_binding" "test" {
-  registry_id = yandex_container_registry.test.id
-  role = "container-registry.viewer"
-  members = ["system:allUsers"]
-}
+# resource "yandex_container_registry" "test" {
+#   name = "test"
+# }
+
+# resource "yandex_container_registry_iam_binding" "test" {
+#   registry_id = yandex_container_registry.test.id
+#   role = "container-registry.viewer"
+#   members = ["system:allUsers"]
+# }
+
+# output "registry" {
+#   value = yandex_container_registry.test.id
+# }
 
 resource "yandex_compute_instance" "vm" {
   name = "vm"
@@ -68,8 +74,4 @@ resource "ansible_host" "vm" {
 
 output "vm-ip" {
   value = yandex_compute_instance.vm.network_interface.0.nat_ip_address
-}
-
-output "registry" {
-  value = yandex_container_registry.test.id
 }

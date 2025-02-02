@@ -2,7 +2,9 @@
 
 URL="https://github.com/vdrandom/shvirtd-example-python.git"
 DEST=/opt/app
+BRANCH=solution
 
 [[ -d "$DEST" ]] && rm -Rf "$DEST"
 git clone "$URL" "$DEST"
+git -C "$DEST" checkout --track "$BRANCH"
 docker compose -f "$DEST/compose.yaml" up -d
